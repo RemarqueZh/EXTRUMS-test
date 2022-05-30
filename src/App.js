@@ -1,6 +1,6 @@
 import './App.css';
 import GetNewItem from './components/GetNewItem';
-import RenderList from './components/RenderList';
+import RenderList from './components/LStorage';
 
 
 function App() {

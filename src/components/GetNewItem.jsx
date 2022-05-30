@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GetBoredAPI from "./GetBoredAPI";
 import List from "./List";
+import LStorage from "./LStorage";
 
 function GetNewItem() {
   let items = GetBoredAPI();
@@ -15,37 +16,28 @@ function GetNewItem() {
       price={items.price}
       link={items.link}
       keys={items.key}
+      key={items.key}
     ></List>
   );
 
-  const [item, setItem] = useState(() => {
-    const saved = localStorage.getItem("Box");
-    const initialValue = JSON.parse(saved);
-    if (localStorage.length === 0) return "";
-    else
-      return (
-        <List
-          activity={initialValue.activity}
-          accessibility={initialValue.accessibility}
-          type={initialValue.type}
-          participants={initialValue.participants}
-          price={initialValue.price}
-          link={initialValue.link}
-          keys={initialValue.key}
-        ></List>
-      );
-  });
+  const [item, setItems] = useState(LStorage);
+
   function reload() {
     window.location.reload();
   }
+
   function eventAdd() {
-    setItem(Object.assign(component));
+    const newArray = [...item, component];
+    setItems([newArray]);
     localStorage.setItem("Box", JSON.stringify(items));
   }
+
   return (
     <div>
-      {component}
-      {item}
+      <h1>Choose fresh ideas to do</h1>
+      <div className="item">{component}</div>
+      <h1>Ideas in my list</h1>
+      <div className="AddedItem">{item}</div>
     </div>
   );
 }
