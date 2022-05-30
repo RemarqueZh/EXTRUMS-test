@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-function GetBodedAPI() {
+function GetBoredAPI() {
     const [items, setItems] = useState([]);
     useEffect(() => {
         fetch('http://www.boredapi.com/api/activity/')
@@ -16,4 +16,4 @@ function GetBodedAPI() {
 }
 
 
-export default GetBodedAPI;
+export default GetBoredAPI;
